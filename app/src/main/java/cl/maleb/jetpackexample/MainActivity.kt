@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = binding.navView
         val navGraphIds = listOf(
-            R.navigation.nav_graph_home,
-            R.navigation.nav_graph_dashboard,
-            R.navigation.nav_graph_notification
+            R.navigation.main_nav_home,
+            R.navigation.main_nav_dashboard,
+            R.navigation.main_nav_notification
         )
 
         // Setup the bottom navigation view with a list of navigation graphs

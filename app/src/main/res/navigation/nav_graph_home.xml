@@ -5,8 +5,6 @@
     android:id="@+id/nav_graph_home"
     app:startDestination="@id/homeFragment">
 
-    <include app:graph="@navigation/nav_graph_notification" />
-
     <fragment
         android:id="@+id/homeFragment"
         android:name="cl.maleb.jetpackexample.ui.home.HomeFragment"

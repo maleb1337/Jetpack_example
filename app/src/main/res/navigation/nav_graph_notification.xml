@@ -20,4 +20,5 @@
         tools:layout="@layout/fragment_notifications_detail">
         <deepLink app:uri="myapp://details" />
     </fragment>
+
 </navigation>

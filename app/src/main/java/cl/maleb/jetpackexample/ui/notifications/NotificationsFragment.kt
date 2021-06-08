@@ -44,7 +44,7 @@ class NotificationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.textNotifications.setOnClickListener {
             val deepLink =
-                "myapp://details".toUri()
+                "myapp://home".toUri()
             findNavController().navigate(deepLink)
         }
     }

@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.actionButton.setOnClickListener {
             val deepLink =
-                "myapp://list".toUri()
+                "myapp://details".toUri()
             findNavController().navigate(deepLink)
 
         }
