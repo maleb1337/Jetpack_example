@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import cl.maleb.jetpackexample.R
 import cl.maleb.jetpackexample.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -41,9 +41,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.actionButton.setOnClickListener {
-//            val action =
-//                HomeFragmentDirections.actionNavigationNotificationsSelf()
-//            findNavController().navigate(action)
+            val deepLink =
+                "myapp://list".toUri()
+            findNavController().navigate(deepLink)
 
         }
         super.onViewCreated(view, savedInstanceState)

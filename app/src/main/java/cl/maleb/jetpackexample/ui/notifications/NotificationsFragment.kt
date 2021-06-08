@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import cl.maleb.jetpackexample.R
 import cl.maleb.jetpackexample.databinding.FragmentNotificationsBinding
 
@@ -36,6 +38,15 @@ class NotificationsFragment : Fragment() {
             textView.text = it
         })
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.textNotifications.setOnClickListener {
+            val deepLink =
+                "myapp://details".toUri()
+            findNavController().navigate(deepLink)
+        }
     }
 
     override fun onDestroyView() {
