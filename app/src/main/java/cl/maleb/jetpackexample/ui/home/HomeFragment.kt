@@ -10,12 +10,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import cl.maleb.jetpackexample.databinding.FragmentHomeBinding
+import cl.maleb.jetpackexample.util.deserializeObject
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
+
+    private val args: HomeFragmentArgs by navArgs()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,6 +40,11 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+
+        val homeViewData: HomeViewData? =
+            args.homeViewData?.deserializeObject(HomeViewData::class.java)
+
+        homeViewModel._text.postValue(homeViewData?.greet.orEmpty())
         return root
     }
 

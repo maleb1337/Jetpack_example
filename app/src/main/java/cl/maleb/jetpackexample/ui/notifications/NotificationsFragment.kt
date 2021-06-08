@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import cl.maleb.jetpackexample.R
 import cl.maleb.jetpackexample.databinding.FragmentNotificationsBinding
+import cl.maleb.jetpackexample.ui.home.HomeFragmentDirections
+import cl.maleb.jetpackexample.ui.home.HomeViewData
+import cl.maleb.jetpackexample.util.serializeObject
 
 class NotificationsFragment : Fragment() {
 
@@ -43,8 +46,8 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.textNotifications.setOnClickListener {
-            val deepLink =
-                "myapp://home".toUri()
+            val test = HomeViewData(name = "test", "hola").serializeObject()
+            val deepLink = "myapp://home/${test}".toUri()
             findNavController().navigate(deepLink)
         }
     }

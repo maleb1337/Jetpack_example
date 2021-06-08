@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -66,5 +67,7 @@ dependencies {
 
     def cardview_version = "1.0.0"
     implementation "androidx.cardview:cardview:$cardview_version"
+
+    implementation 'com.google.code.gson:gson:2.8.7'
 
 }
