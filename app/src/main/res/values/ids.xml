@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="graph_id" type="id"/>
+    <item name="graph_id_2" type="id"/>
+    <item name="graph_id_3" type="id"/>
+    <item name="dest_home" type="id"/>
+    <item name="dest_dashboard" type="id"/>
+    <item name="dest_notifications" type="id"/>
+    <item name="dest_notificationsDetails" type="id"/>
+    <item name="action_to_home" type="id"/>
+    <item name="action_to_notifications" type="id"/>
+
+    <item name="args_home" type="string">HomeId</item>
+
+</resources>

@@ -1,25 +1,23 @@
 package cl.maleb.jetpackexample.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import cl.maleb.jetpackexample.R
 import cl.maleb.jetpackexample.databinding.FragmentHomeBinding
-import cl.maleb.jetpackexample.util.deserializeObject
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
-
-    private val args: HomeFragmentArgs by navArgs()
+    private var homeArg: HomeViewData? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -30,6 +28,8 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -40,20 +40,19 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        arguments?.get(getString(R.string.args_home)).let {
+            if(it != null)
+                homeArg = it as HomeViewData
+        }
 
-        val homeViewData: HomeViewData? =
-            args.homeViewData?.deserializeObject(HomeViewData::class.java)
-
-        homeViewModel._text.postValue(homeViewData?.greet.orEmpty())
+        homeViewModel._text.postValue( homeArg?.name)
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("Test",arguments.toString())
         binding.actionButton.setOnClickListener {
-            val deepLink =
-                "myapp://details".toUri()
-            findNavController().navigate(deepLink)
-
+            findNavController().navigate(R.id.action_to_notifications)
         }
         super.onViewCreated(view, savedInstanceState)
     }
