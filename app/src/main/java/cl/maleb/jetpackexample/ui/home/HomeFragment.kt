@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.actionButton.setOnClickListener {
             val action =
-                NotificationsFragmentDirections.actionNotificationsDetailFragmentSelf()
+                NotificationsFragmentDirections.actionNotificationsFragmentSelf()
             findNavController().navigate(action)
 
         }

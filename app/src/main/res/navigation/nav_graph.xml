@@ -12,4 +12,9 @@
         android:id="@+id/action_homeFragment_self"
         app:destination="@id/nav_graph_home" />
 
+    <action
+        android:id="@+id/action_notificationsFragment_self"
+        app:destination="@id/nav_graph_notification" />
+
+
 </navigation>
