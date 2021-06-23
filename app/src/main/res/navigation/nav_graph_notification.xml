@@ -10,7 +10,7 @@
         android:name="cl.maleb.jetpackexample.ui.notifications.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications">
-        <deepLink app:uri="myapp://list" />
+        <!--        <deepLink app:uri="myapp://list" />-->
 
     </fragment>
     <fragment
@@ -18,7 +18,9 @@
         android:name="cl.maleb.jetpackexample.ui.notifications.NotificationsDetailFragment"
         android:label="fragment_notifications_detail"
         tools:layout="@layout/fragment_notifications_detail">
-        <deepLink app:uri="myapp://details" />
+        <!--        <deepLink app:uri="myapp://details" />-->
     </fragment>
+
+    <action android:id="@+id/action_homeFragment_self" />
 
 </navigation>

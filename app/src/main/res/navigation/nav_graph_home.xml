@@ -13,9 +13,15 @@
         <argument
             android:name="homeViewData"
             android:defaultValue="@null"
-            app:argType="string"
+            app:argType="cl.maleb.jetpackexample.ui.home.HomeViewData"
             app:nullable="true" />
-        <deepLink app:uri="myapp://home/{homeViewData}" />
+        <deepLink
+            app:action="@+id/action_homeFragment_self"
+            app:uri="myapp://home/{homeViewData}" />
     </fragment>
+
+    <action
+        android:id="@+id/action_homeFragment_self"
+        app:destination="@id/homeFragment" />
 
 </navigation>

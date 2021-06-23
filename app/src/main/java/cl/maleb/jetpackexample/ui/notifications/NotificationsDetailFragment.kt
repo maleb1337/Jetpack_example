@@ -1,18 +1,14 @@
 package cl.maleb.jetpackexample.ui.notifications
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
-import androidx.navigation.NavDeepLinkBuilder
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import cl.maleb.jetpackexample.R
 import cl.maleb.jetpackexample.databinding.FragmentNotificationsDetailBinding
-import cl.maleb.jetpackexample.ui.home.HomeFragmentDirections
 import cl.maleb.jetpackexample.ui.home.HomeViewData
-import cl.maleb.jetpackexample.util.serializeObject
 
 
 class NotificationsDetailFragment : Fragment() {
@@ -41,8 +37,7 @@ class NotificationsDetailFragment : Fragment() {
             /**
              * deeplink implicit
              */
-            val test = HomeViewData(name = "test", "hola").serializeObject()
-            val deepLink = "myapp://home/${test}".toUri()
+            val deepLink = "myapp://home/".toUri()
             /**
              * deeplink explicit
              */

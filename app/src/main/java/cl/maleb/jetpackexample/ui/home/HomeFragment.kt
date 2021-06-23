@@ -9,10 +9,11 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import cl.maleb.jetpackexample.databinding.FragmentHomeBinding
-import cl.maleb.jetpackexample.util.deserializeObject
+import cl.maleb.jetpackexample.util.ARG_HOME_VIEW_DATA
 
 class HomeFragment : Fragment() {
 
@@ -41,10 +42,6 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
 
-        val homeViewData: HomeViewData? =
-            args.homeViewData?.deserializeObject(HomeViewData::class.java)
-
-        homeViewModel._text.postValue(homeViewData?.greet.orEmpty())
         return root
     }
 
@@ -54,6 +51,10 @@ class HomeFragment : Fragment() {
                 "myapp://details".toUri()
             findNavController().navigate(deepLink)
 
+        }
+        arguments?.let {
+            val args = HomeFragmentArgs.fromBundle(it)
+            homeViewModel.setTextValue(args.homeViewData?.greet.orEmpty())
         }
         super.onViewCreated(view, savedInstanceState)
     }

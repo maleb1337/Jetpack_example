@@ -9,12 +9,13 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDeepLinkBuilder
+import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import cl.maleb.jetpackexample.R
 import cl.maleb.jetpackexample.databinding.FragmentNotificationsBinding
-import cl.maleb.jetpackexample.ui.home.HomeFragmentDirections
 import cl.maleb.jetpackexample.ui.home.HomeViewData
-import cl.maleb.jetpackexample.util.serializeObject
+import cl.maleb.jetpackexample.util.ARG_HOME_VIEW_DATA
 
 class NotificationsFragment : Fragment() {
 
@@ -46,8 +47,35 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.textNotifications.setOnClickListener {
-            val test = HomeViewData(name = "test", "hola").serializeObject()
-            val deepLink = "myapp://home/${test}".toUri()
+            val test = HomeViewData(name = "test", "hola")
+            val deepLink = "myapp://home/$test".toUri()
+
+
+            val deepLinkRequest = NavDeepLinkRequest.Builder
+                .fromUri("myapp://home/".toUri())
+                .setAction("android.intent.action.MY_ACTION")
+                .setMimeType("type/subtype")
+                .build()
+
+//            findNavController().previousBackStackEntry?.arguments?.putParcelable(
+//                "homeViewData", HomeViewData(name = "test", "hola")
+//            )
+            val args = Bundle()
+            args.putParcelable(ARG_HOME_VIEW_DATA, HomeViewData(name = "test", "hola"))
+            val deepLinkExplicit = NavDeepLinkBuilder(requireContext())
+                .setGraph(R.navigation.main_nav_notification)
+                .setDestination(R.id.homeFragment)
+                .setArguments(args)
+                .createPendingIntent()
+
+//            deepLinkExplicit.send()
+
+//            val action = HomeFragmentDirections.actionHomeFragmentSelf(
+//                homeViewData = HomeViewData(name = "test", "hola")
+//            )
+
+//            val action2 = NotificationsFragmentDirections.actionHomeFragmentSelf()
+
             findNavController().navigate(deepLink)
         }
     }
