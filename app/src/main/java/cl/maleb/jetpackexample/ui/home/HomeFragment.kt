@@ -12,14 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import cl.maleb.jetpackexample.databinding.FragmentHomeBinding
+import cl.maleb.jetpackexample.util.ARG_HOME_VIEW_DATA
 import cl.maleb.jetpackexample.util.deserializeObject
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
-
-    private val args: HomeFragmentArgs by navArgs()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -41,17 +40,14 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
 
-        val homeViewData: HomeViewData? =
-            args.homeViewData?.deserializeObject(HomeViewData::class.java)
-
-        homeViewModel._text.postValue(homeViewData?.greet.orEmpty())
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.actionButton.setOnClickListener {
+            val homeViewData = HomeViewData("hola", "saludos")
             val deepLink =
-                "myapp://details".toUri()
+                "myapp://details/$homeViewData".toUri()
             findNavController().navigate(deepLink)
 
         }

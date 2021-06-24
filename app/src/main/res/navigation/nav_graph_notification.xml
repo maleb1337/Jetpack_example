@@ -18,7 +18,10 @@
         android:name="cl.maleb.jetpackexample.ui.notifications.NotificationsDetailFragment"
         android:label="fragment_notifications_detail"
         tools:layout="@layout/fragment_notifications_detail">
-        <deepLink app:uri="myapp://details" />
+        <argument
+            android:name="homeViewData"
+            app:argType="cl.maleb.jetpackexample.ui.home.HomeViewData" />
+        <deepLink app:uri="myapp://details/{homeViewData}" />
     </fragment>
 
 </navigation>

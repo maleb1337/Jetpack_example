@@ -10,12 +10,7 @@
         android:name="cl.maleb.jetpackexample.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
-        <argument
-            android:name="homeViewData"
-            android:defaultValue="@null"
-            app:argType="string"
-            app:nullable="true" />
-        <deepLink app:uri="myapp://home/{homeViewData}" />
+        <deepLink app:uri="myapp://home/" />
     </fragment>
 
 </navigation>
