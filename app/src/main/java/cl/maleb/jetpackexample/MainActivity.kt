@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
 
         if (savedInstanceState == null) {
-            testGraph2()
+            testGraph()
         }
 
     }
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         // Now that BottomNavigationBar has restored its instance state
         // and its selectedItemId, we can proceed with setting up the
         // BottomNavigationBar with Navigation
-        testGraph2()
+        testGraph()
     }
 
     /*private fun setupBottomNavigationBar2(){
