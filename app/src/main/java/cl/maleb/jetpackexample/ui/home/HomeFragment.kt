@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         })
 
         val homeViewData: HomeViewData? =
-            args.homeViewData?.deserializeObject(HomeViewData::class.java)
+            args.homeViewData?.deserializeObject()
 
         homeViewModel._text.postValue(homeViewData?.greet.orEmpty())
         return root
