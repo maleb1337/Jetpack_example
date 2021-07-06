@@ -45,9 +45,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.actionButton.setOnClickListener {
-            val homeViewData = HomeViewData("hola", "saludos")
             val deepLink =
-                "myapp://details/$homeViewData".toUri()
+                "myapp://details/".toUri()
             findNavController().navigate(deepLink)
 
         }

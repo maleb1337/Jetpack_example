@@ -11,6 +11,7 @@ import cl.maleb.jetpackexample.databinding.FragmentNotificationsDetailBinding
 import cl.maleb.jetpackexample.ui.home.HomeViewData
 import cl.maleb.jetpackexample.ui.notifications.viewpager.ViewPagerAdapter
 import cl.maleb.jetpackexample.util.ARG_HOME_VIEW_DATA
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class NotificationsDetailFragment : Fragment() {
@@ -39,7 +40,9 @@ class NotificationsDetailFragment : Fragment() {
         val adapter = ViewPagerAdapter(this)
         binding.viewpager.adapter = adapter
 
-        Toast.makeText(requireContext(), "", Toast.LENGTH_LONG).show()
+        TabLayoutMediator(binding.tablayout, binding.viewpager) { tab, position ->
+            tab.text = "Title ${(position + 1)}"
+        }.attach()
 
     }
 
